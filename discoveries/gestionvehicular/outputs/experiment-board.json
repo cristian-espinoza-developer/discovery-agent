@@ -1,0 +1,44 @@
+{
+  "hypotheses": [
+    {
+      "id": "H-01",
+      "risk": "alto",
+      "assumption": "El mecánico (sin estudios superiores, muchos años en el proceso manual de papel/Excel) registrará las órdenes de trabajo completas en la interfaz digital sin volver al papel para transcribir después.",
+      "hypothesis": "Creemos que el mecánico registrará las órdenes de trabajo completas en el sistema si el formulario de registro toma el mismo tiempo o menos que anotar en papel y subir a Excel, porque su queja en la entrevista no es resistencia al cambio sino el tiempo perdido cuadrando el Excel a fin de mes y olvidando anotar datos.",
+      "metric": "Porcentaje de órdenes de trabajo del piloto registradas directamente en el sistema por el mecánico (sin quedarse en papel para transcribir luego) y tiempo promedio de registro por orden.",
+      "threshold": "≥ 80% de las órdenes de trabajo de un piloto de 2 semanas en un centro quedan registradas directamente en el sistema por el mecánico sin ayuda externa, con un tiempo promedio de registro ≤ 5 minutos por orden.",
+      "experiment": "Mago de Oz / prototipo funcional mínimo: formulario de registro de orden de trabajo (vehículo, trabajos, materiales, costos) probado con el mecánico en 10-15 órdenes reales durante 1 semana, con acompañamiento el primer día y sin ayuda el resto.",
+      "decision": "Si pasa (≥80% y ≤5 min) → construir el módulo completo de registro de órdenes tal como está diseñado. Si falla (<80% o tiempo mayor) → simplificar el formulario (menos campos obligatorios, entrada por foto o dictado) o mantener una captura asistida por el encargado como paso intermedio, y volver a probar antes de escalar a más centros."
+    },
+    {
+      "id": "H-02",
+      "risk": "alto",
+      "assumption": "Los policías adoptarán el autoagendamiento y los recordatorios digitales en lugar de ignorarlos, como ignoraban el papel con la fecha del próximo mantenimiento.",
+      "hypothesis": "Creemos que los policías asistirán a su mantenimiento programado si reciben un recordatorio automático 48 horas antes por un canal que ya revisan (WhatsApp/SMS) con opción de confirmar o reagendar, porque según la entrevista el problema no es falta de voluntad sino el olvido (el papel con la fecha se pierde).",
+      "metric": "Tasa de asistencia a mantenimientos programados entre los policías que recibieron el recordatorio digital, sin llamada de reclamo del mecánico.",
+      "threshold": "≥ 70% de asistencia sin llamada de reclamo, en un piloto de 3 semanas en un centro (mismo umbral que la métrica de éxito del MVP Canvas).",
+      "experiment": "Fake door / concierge: enviar recordatorios reales por WhatsApp/SMS 48 horas antes a los policías con turnos ya agendados por el encargado (sin construir aún el autoagendamiento), y registrar manualmente cuántos asisten sin llamada de seguimiento del mecánico, durante 3 semanas en 1 centro.",
+      "decision": "Si pasa (≥70%) → construir el módulo de recordatorios y autoagendamiento tal como está diseñado. Si falla (<70%) → entrevistar a los policías que no asistieron para identificar la causa (canal equivocado, mensaje poco claro, falta de confirmación) y probar un segundo canal o exigir confirmación explícita antes de invertir en el autoagendamiento completo."
+    },
+    {
+      "id": "H-03",
+      "risk": "medio",
+      "assumption": "El encargado migrará la coordinación de turnos de su celular personal al sistema, en vez de seguir agendando por llamadas y notas propias.",
+      "hypothesis": "Creemos que el encargado migrará el agendamiento a la agenda digital si esta le ahorra las llamadas que hoy olvida hacer al mecánico, porque su queja en la entrevista es que se le olvida avisar, no que prefiera el celular.",
+      "metric": "Porcentaje de turnos coordinados en la semana que el encargado ingresa en la agenda digital el mismo día de la coordinación (no días después ni solo en su celular).",
+      "threshold": "≥ 85% de los turnos coordinados en un piloto de 2 semanas quedan registrados en el sistema el mismo día de la coordinación.",
+      "experiment": "Prototipo desechable / smoke test: dar al encargado acceso a una agenda digital mínima (crear/editar turno) durante 2 semanas y comparar contra su registro habitual en el celular personal.",
+      "decision": "Si pasa (≥85%) → construir el flujo completo de agenda para el encargado. Si falla (<85%) → identificar la fricción puntual (acceso desde el celular, velocidad de carga) y simplificar la entrada (plantilla rápida o carga por voz) antes de escalar a más centros."
+    },
+    {
+      "id": "H-04",
+      "risk": "bajo",
+      "assumption": "El gerente usará el panel móvil de aprobaciones en lugar de seguir esperando su correo diario de Excel.",
+      "hypothesis": "Creemos que el gerente aprobará solicitudes de repuestos desde el panel móvil si este le toma menos pasos que abrir el correo desde el celular, porque su queja en la entrevista es que el Excel no le abre bien en el celular y le llegan demasiados correos sueltos, no que rechace un canal digital.",
+      "metric": "Porcentaje de solicitudes de repuestos que el gerente aprueba o rechaza desde el panel dentro de las primeras 24 horas de llegada.",
+      "threshold": "≥ 75% de las solicitudes de un piloto de 1 mes son aprobadas o rechazadas desde el panel dentro de las primeras 24 horas (frente a la demora de días reportada actualmente por el encargado).",
+      "experiment": "Prototipo evolutivo mínimo: habilitar solo la bandeja de aprobación de solicitudes de repuestos en el panel móvil (sin el resto de bandejas) durante 1 mes con solicitudes reales de un centro.",
+      "decision": "Si pasa (≥75% en <24h) → construir el panel gerencial completo con las demás bandejas (viajes, novedades, reportes). Si falla (<75%) → indagar con el gerente qué información le falta para decidir sin llamar al encargado, y ajustar el flujo de aprobación antes de construir el resto del panel."
+    }
+  ]
+}
